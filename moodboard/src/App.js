@@ -2,41 +2,24 @@ import "./App.css"
 import AddPost from "./components/functional/AddPost"
 import NavBar from "./components/NavBar"
 import Post from "./components/views/Post"
-const posts = [
-    {
-        id: 1,
-        title: "Hello world",
-        caption: "This is the very first moodboard post"
-    },
-    {
-        id: 2,
-        title: "Nam dictum nulla",
-        caption:
-            "Aenean consequat quam vel tincidunt elementum. Etiam convallis diam vulputate, fringilla massa a, mollis quam. Phasellus a bibendum risus, id semper est. "
-    },
-    {
-        id: 3,
-        title: "First Task of the day",
-        caption:
-            "Get ready in the morning. Praesent pellentesque eget ipsum vel bibendum."
-    },
-    {
-        id: 4,
-        title: "This is what the very last text post is gonna look like.",
-        caption:
-            "hee yaw ya hooo lets go here lim currently learning tailwind blah blha"
-    }
-]
+import posts from "./data/posts"
 
 function App() {
-    // const postsToDisplay = posts.forEach((post) => )
+    const postsToDisplay = posts.map(
+        (post) => <Post title={post.title} content={post.content} />
+        // console.log(post.title)
+    )
+    console.log(postsToDisplay)
     return (
-        <div bg-gray-800>
+        <div className="h-screen bg-defaultBg">
             <NavBar />
-            <Post caption="hello" content="world" />
-            <div className="container object-right-bottom">
-                <AddPost />
+            {/* Container for posts interface */}
+            <div className="block w-screen flex flex-column flex-grow">
+                {/* Display of all the posts */}
+                <div className="flex flex-row flex-wrap ">{postsToDisplay}</div>
             </div>
+            {/* Add Post floating bottom right button */}
+            <AddPost />
         </div>
     )
 }

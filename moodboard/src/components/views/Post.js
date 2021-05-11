@@ -1,8 +1,8 @@
-const Post = ({caption, content}) => {
+const Post = ({title, content}) => {
     return (
-        <div className="text-left w-48 h-64 bg-secondary">
-            <div className="text-2xl font-bold">{caption}</div>
-            <div className="text-base ">{content}</div>
+        <div className="w-64 h-64 bg-secondary m-3 p-5 overflow-y-auto">
+            <div className=" text-2xl font-bold ">{title}</div>
+            <div className="text-base">{content}</div>
         </div>
     )
 }

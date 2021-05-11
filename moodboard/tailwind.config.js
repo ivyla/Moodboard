@@ -10,7 +10,7 @@ module.exports = {
             gray: colors.trueGray,
             primary: "#236477",
             secondary: "#7cad3e",
-            defaultBg: "F4F4F4"
+            defaultBg: "#F4F4F4"
         }
     },
     variants: {
