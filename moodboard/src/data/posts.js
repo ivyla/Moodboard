@@ -24,13 +24,13 @@ let posts = [
     },
     {
         id: 5,
-        title: "This is what the very last text post is gonna look like.",
-        content:
-            "hee yaw ya hooo lets go here lim currently learning tailwind blah blha"
+        title: "This is what the very last text post is gonna look like."
+        // content:
+        // "hee yaw ya hooo lets go here lim currently learning tailwind blah blha"
     },
     {
         id: 6,
-        title: "This is what the very last text post is gonna look like.",
+        // title: "This is what the very last text post is gonna look like.",
         content:
             "hee yaw ya hooo lets go here lim currently learning tailwind blah blha"
     },

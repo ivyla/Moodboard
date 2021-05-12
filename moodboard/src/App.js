@@ -11,7 +11,8 @@ function App() {
     )
     console.log(postsToDisplay)
     return (
-        <div className="h-screen bg-defaultBg">
+        // <div className="h-screen bg-defaultBg">
+        <div className="h-full bg-secondary">
             <NavBar />
             {/* Container for posts interface */}
             <div className="block w-screen flex flex-column flex-grow">

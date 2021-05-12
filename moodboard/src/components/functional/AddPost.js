@@ -1,9 +1,31 @@
 import {useState} from "react"
 
 const AddPost = () => {
+    const [displayDropdown, setDropdown] = useState(false)
+    let dropdownString
+    displayDropdown
+        ? (dropdownString = "w-20 bg-white text-center")
+        : (dropdownString = "hidden")
+
+    const handlePress = () => setDropdown(!displayDropdown)
+
     return (
-        <div>
-            <button className="fixed m-5 right-0 bottom-0 w-12 h-12 bg-primary rounded-full">
+        <div className="flex flex-col fixed right-0 bottom-0">
+            <div className={dropdownString}>
+                {" "}
+                <ul>
+                    {" "}
+                    <li>
+                        {" "}
+                        <button> howdy</button>{" "}
+                    </li>{" "}
+                    <li> Image </li> <li> Media </li>{" "}
+                </ul>{" "}
+            </div>
+            <button
+                className="mx-5 my-2 w-12 h-12 bg-primary rounded-full"
+                onClick={handlePress}
+            >
                 <svg
                     viewBox="0 0 20 20"
                     enable-background="new 0 0 20 20"
