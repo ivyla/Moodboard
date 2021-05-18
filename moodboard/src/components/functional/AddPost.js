@@ -1,16 +1,13 @@
 import {useState} from "react"
+import Post from "../views/Post"
 
-const AddPost = ({setAddPost, addPost}) => {
-    const [displayDropdown, setDropdown] = useState(false)
-    // let dropdownString
-    // displayDropdown
-    //     ? (dropdownString = "w-20 bg-white text-center")
-    //     : (dropdownString = "hidden")
-
+const AddPost = ({setAddPost, addPost, setPosts, postsToDisplay}) => {
     const handlePress = () => {
         // setDropdown(!displayDropdown)
-        setAddPost(!addPost)
-        console.log("addPost: ", addPost)
+        // setAddPost(!addPost)
+        // console.log("addPost: ", addPost)
+        setPosts(postsToDisplay.concat(<Post content="new post" />))
+        // set focus to the most recently added item
     }
 
     return (
