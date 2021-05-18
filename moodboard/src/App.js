@@ -17,13 +17,12 @@ function App() {
     const [addPost, setAddPost] = useState(false)
 
     return (
-        // <div className="h-screen bg-defaultBg">
-        <div className="h-full bg-secondary">
+        <div className="h-full bg-defaultBg overflow-hidden">
             <NavBar />
             {/* Container for posts interface */}
-            <div className="block w-screen flex flex-column flex-grow">
+            <div className="block w-screen flex flex-column flex-grow m-auto">
                 {/* Display of all the posts */}
-                <div className="flex flex-row flex-wrap ">
+                <div className="flex flex-row flex-wrap justify-center">
                     {postsToDisplay}{" "}
                     {addPost && (
                         <Post
