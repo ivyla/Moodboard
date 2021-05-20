@@ -6,14 +6,19 @@ import Post from "./components/views/Post"
 import postData from "./data/posts"
 
 function App() {
-    // const postsToDisplay = ))
-
     const [postsToDisplay, setPosts] = useState(
         postData.map((post) => (
-            <Post title={post.title} content={post.content} newPost={false} />
+            <Post
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                content={post.content}
+                newPost={false}
+            />
         ))
     )
 
+    console.log(postsToDisplay)
     const [addPost, setAddPost] = useState(false)
 
     return (
