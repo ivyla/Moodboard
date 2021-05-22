@@ -24,7 +24,6 @@ function App() {
         let updatedPosts = posts.concat(newPostContent)
         setPosts(updatedPosts)
     }
-    console.log(posts)
     // Currently no filter for the posts - for now, we are rendering all of them
     const displayedPosts = posts.map((post) => (
         <Post key={post.id} id={post.id} post={post} deletePost={deletePost} />
@@ -39,7 +38,7 @@ function App() {
                     {displayedPosts}{" "}
                 </div>
             </div>
-            {/* Add Post floating bottom right button */}
+            {/* Floating bottom right button */}
             <AddPost addPost={addPost} />
         </div>
     )

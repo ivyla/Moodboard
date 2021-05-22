@@ -5,7 +5,7 @@ import EditPost from "../functional/EditPost"
 const Post = ({post, id, deletePost}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
-    const [showDelete, setDelete] = useState(false)
+    const [showDelete, setDelete] = useState(true)
 
     const handleTitle = (event) => setTitle(event.target.value)
     const handleText = (event) => setContent(event.target.value)
@@ -15,6 +15,7 @@ const Post = ({post, id, deletePost}) => {
     return (
         <div className="w-72 h-72 bg-white m-3 overflow-y-auto rounded-md shadow-md">
             <EditPost showDelete={showDelete} setDelete={setDelete} />
+            {/* Delete Overlay */}
             <div
                 className={
                     showDelete
@@ -23,12 +24,18 @@ const Post = ({post, id, deletePost}) => {
                 }
             >
                 {" "}
-                <h1> Delete this post? </h1>
-                <button onClick={() => deletePost(post.id)}>
-                    {" "}
-                    Delete{" "}
-                </button>{" "}
-                <button onClick={() => setDelete(false)}> Cancel </button>{" "}
+                <h1 className="text-2xl text-center"> Delete this post? </h1>
+                <div className="flex flex-col justify-center">
+                    <button onClick={() => deletePost(post.id)}>
+                        {" "}
+                        Delete{" "}
+                    </button>{" "}
+                    <button onClick={() => setDelete(false)}>
+                        {" "}
+                        Cancel{" "}
+                    </button>{" "}
+                </div>
+                {/* End of delete overlay */}
             </div>
             {/* Text Areas */}
             <div className="p-5">
