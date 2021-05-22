@@ -1,19 +1,15 @@
-import Post from "../views/Post"
+// import Post from "../views/Post"
 
-const AddPost = ({setAddPost, addPost, setPosts, postsToDisplay}) => {
-    const handlePress = () => {
-        // setDropdown(!displayDropdown)
-        // setAddPost(!addPost)
-        // console.log("addPost: ", addPost)
-        setPosts(postsToDisplay.concat(<Post content="new post" />))
-        // set focus to the most recently added item
-    }
+const AddPost = ({setAddPost, addPost, setPosts}) => {
+    // const handlePress = () => {
+    //     setPosts(postsToDisplay.concat(<Post content="new post" />))
+    // }
 
     return (
         <div className="flex flex-col fixed right-0 bottom-0">
             <button
                 className="mx-5 my-2 w-12 h-12 bg-primary rounded-full"
-                onClick={handlePress}
+                // onClick={handlePress}
             >
                 <svg
                     viewBox="0 0 20 20"
