@@ -1,15 +1,9 @@
-// import Post from "../views/Post"
-
-const AddPost = ({setAddPost, addPost, setPosts}) => {
-    // const handlePress = () => {
-    //     setPosts(postsToDisplay.concat(<Post content="new post" />))
-    // }
-
+const AddPost = ({addPost}) => {
     return (
         <div className="flex flex-col fixed right-0 bottom-0">
             <button
                 className="mx-5 my-2 w-12 h-12 bg-primary rounded-full"
-                // onClick={handlePress}
+                onClick={() => addPost()}
             >
                 <svg
                     viewBox="0 0 20 20"

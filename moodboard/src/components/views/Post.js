@@ -2,8 +2,7 @@
 import {useState} from "react"
 import EditPost from "../functional/EditPost"
 
-const Post = ({post, deletePost}) => {
-    // const Post = ({title, content, newPost, id, postsToDisplay, setPosts}) => {
+const Post = ({post, id, deletePost}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
     const [showDelete, setDelete] = useState(false)
