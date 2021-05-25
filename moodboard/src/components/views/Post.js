@@ -5,7 +5,7 @@ import EditPost from "../functional/EditPost"
 const Post = ({post, id, deletePost}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
-    const [showDelete, setDelete] = useState(true)
+    const [showDelete, setDelete] = useState(false)
 
     const handleTitle = (event) => setTitle(event.target.value)
     const handleText = (event) => setContent(event.target.value)
@@ -13,24 +13,30 @@ const Post = ({post, id, deletePost}) => {
         "box-border break-words overflow-hidden resize-none w-full"
 
     return (
-        <div className="w-72 h-72 bg-white m-3 overflow-y-auto rounded-md shadow-md">
+        <div className="w-72 h-72 bg-white m-3 overflow-y-auto rounded-md shadow-md ">
             <EditPost showDelete={showDelete} setDelete={setDelete} />
             {/* Delete Overlay */}
             <div
                 className={
                     showDelete
-                        ? "block absolute w-72 h-72 bg-black text-white opacity-70 overflow-y-auto rounded-md shadow-md"
+                        ? "block absolute pt-16 w-72 h-72 bg-black text-white opacity-70 overflow-y-auto rounded-md shadow-md"
                         : "hidden"
                 }
             >
                 {" "}
                 <h1 className="text-2xl text-center"> Delete this post? </h1>
-                <div className="flex flex-col justify-center">
-                    <button onClick={() => deletePost(post.id)}>
+                <div className="flex flex-row space-evenly justify-center space-x-4">
+                    <button
+                        className="btn-delete"
+                        onClick={() => deletePost(post.id)}
+                    >
                         {" "}
                         Delete{" "}
                     </button>{" "}
-                    <button onClick={() => setDelete(false)}>
+                    <button
+                        className="btn-neutral"
+                        onClick={() => setDelete(false)}
+                    >
                         {" "}
                         Cancel{" "}
                     </button>{" "}

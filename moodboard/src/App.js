@@ -28,6 +28,7 @@ function App() {
     const displayedPosts = posts.map((post) => (
         <Post key={post.id} id={post.id} post={post} deletePost={deletePost} />
     ))
+    console.log(posts)
     return (
         <div className="h-full bg-defaultBg overflow-hidden">
             <NavBar />

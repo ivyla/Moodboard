@@ -7,7 +7,8 @@ module.exports = {
         colors: {
             black: colors.black,
             white: colors.white,
-            gray: colors.trueGray,
+            gray: colors.coolGray,
+            red: "#DC2626",
             primary: "#236477",
             secondary: "#7cad3e",
             defaultBg: "#F4F4F4"
