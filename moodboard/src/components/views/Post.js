@@ -24,7 +24,10 @@ const Post = ({post, id, deletePost}) => {
                 }
             >
                 {" "}
-                <h1 className="text-2xl text-center"> Delete this post? </h1>
+                <h1 className="text-2xl text-center m-4">
+                    {" "}
+                    Delete this post?{" "}
+                </h1>
                 <div className="flex flex-row space-evenly justify-center space-x-4">
                     <button
                         className="btn-delete"

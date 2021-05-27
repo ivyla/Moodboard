@@ -1,9 +1,14 @@
 import "./App.css"
 import {useState} from "react"
-import AddPost from "./components/functional/AddPost"
 import NavBar from "./components/NavBar"
 import Post from "./components/views/Post"
 import postData from "./data/posts"
+
+import CircularButton from "./components/reusable/CircularButton"
+
+// icons
+import AddIcon from "./icons/AddIcon"
+import ChangeBg from "./icons/ChangeBg"
 
 function App() {
     const [posts, setPosts] = useState(postData)
@@ -40,7 +45,12 @@ function App() {
                 </div>
             </div>
             {/* Floating bottom right button */}
-            <AddPost addPost={addPost} />
+            <div className="flex flex-row fixed right-0 bottom-0 mx-5 my-2 space-x-4">
+                <CircularButton action={addPost} image={<AddIcon />} />
+                <CircularButton action={addPost} image={<ChangeBg />} />
+
+                {/* <CircularButton action={null}  /> */}
+            </div>
         </div>
     )
 }
