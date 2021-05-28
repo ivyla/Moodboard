@@ -1,9 +1,10 @@
 import "./App.css"
-import {useState} from "react"
+import {useState, useEffect} from "react"
+import axios from "axios"
+// Components
 import NavBar from "./components/NavBar"
 import Post from "./components/views/Post"
-import postData from "./data/posts"
-
+// import postData from "./data/posts"
 import CircularButton from "./components/reusable/CircularButton"
 
 // icons
@@ -11,7 +12,14 @@ import AddIcon from "./icons/AddIcon"
 import ChangeBg from "./icons/ChangeBg"
 
 function App() {
-    const [posts, setPosts] = useState(postData)
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/posts").then((response) => {
+            console.log("promise fulfilled")
+            setPosts(response.data)
+        })
+    }, [])
     // Selected will be the postId
     const [selected, setSelected] = useState(-1)
 
