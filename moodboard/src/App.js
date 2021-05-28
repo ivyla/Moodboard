@@ -12,6 +12,9 @@ import ChangeBg from "./icons/ChangeBg"
 
 function App() {
     const [posts, setPosts] = useState(postData)
+    // Selected will be the postId
+    const [selected, setSelected] = useState(-1)
+
     const deletePost = (id) => {
         let updatedPosts = posts.filter((post) => {
             return post.id !== id
@@ -31,16 +34,23 @@ function App() {
     }
     // Currently no filter for the posts - for now, we are rendering all of them
     const displayedPosts = posts.map((post) => (
-        <Post key={post.id} id={post.id} post={post} deletePost={deletePost} />
+        <Post
+            key={post.id}
+            id={post.id}
+            post={post}
+            deletePost={deletePost}
+            selected={selected}
+            setSelected={setSelected}
+        />
     ))
-    console.log(posts)
+
     return (
         <div className="h-full bg-defaultBg overflow-hidden">
             <NavBar />
             {/* Container for posts interface */}
             <div className="block w-screen flex flex-column flex-grow m-auto">
                 {/* Display of all the posts */}
-                <div className="flex flex-row flex-wrap justify-center">
+                <div className="flex  flex-row flex-wrap justify-center">
                     {displayedPosts}{" "}
                 </div>
             </div>

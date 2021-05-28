@@ -1,13 +1,17 @@
-const EditPost = ({setDelete, showDelete}) => {
-    const handleDeleteClick = (event) => {
+const EditPost = ({setDelete, showDelete, selected, setSelected, postId}) => {
+    const handleDeleteClick = () => {
         setDelete(!showDelete)
+    }
+
+    const handleEditClick = () => {
+        setSelected(postId)
     }
     const staticButtonStyle =
         "bg-white h-10 w-10 rounded-full flex justify-center m-1 shadow-md"
     return (
         <div className="relative opacity-0 hover:opacity-100">
             <div className="absolute right-0 w-32 h-20 flex justify-center py-2">
-                <div className={staticButtonStyle}>
+                <div className={staticButtonStyle} onClick={handleEditClick}>
                     {/* Edit Button */}
                     <button>
                         <svg
