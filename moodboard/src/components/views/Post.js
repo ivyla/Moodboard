@@ -1,6 +1,7 @@
 // An editable post
 import {useState} from "react"
 import EditPost from "../functional/EditPost"
+import TextareaAutosize from "react-textarea-autosize"
 
 const Post = ({post, id, deletePost, selected, setSelected}) => {
     const [titleValue, setTitle] = useState(post.title)
@@ -13,7 +14,7 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
         "box-border break-words overflow-hidden resize-none w-full"
 
     const titleDisplay = titleValue ? (
-        <textarea
+        <TextareaAutosize
             className={titleAreaStyle}
             value={titleValue}
             onChange={handleTitle}
@@ -21,14 +22,13 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
     ) : null
 
     const contentDisplay = contentValue ? (
-        <textarea
+        <TextareaAutosize
             className={titleAreaStyle.concat(" text-base")}
             value={contentValue}
             onChange={handleText}
         />
     ) : null
 
-    console.log("selected: ", selected)
     return (
         <div className="w-72 h-72 bg-white m-3 overflow-y-auto rounded-md shadow-md ">
             <EditPost
