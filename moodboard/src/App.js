@@ -50,8 +50,9 @@ function App() {
         />
     ))
 
+    console.log(`selected: ${selected}`)
     return (
-        <div className="h-full bg-defaultBg overflow-hidden">
+        <div className="h-screen bg-defaultBg overflow-hidden">
             <NavBar />
             {/* Container for posts interface */}
             <div className="block w-screen flex flex-column flex-grow m-auto">
