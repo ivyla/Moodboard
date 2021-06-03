@@ -24,21 +24,32 @@ function App() {
     // Selected will be the postId
 
     const deletePost = (id) => {
+        console.log("deleting ", id)
         let updatedPosts = posts.filter((post) => {
             return post.id !== id
         })
-        setPosts(updatedPosts)
+        axios
+            .delete(`http://localhost:3001/posts/${id}`)
+            .then((response) => {
+                console.log(`deleted ${response.data}`)
+                setPosts(updatedPosts)
+            })
+            .catch((error) => console.log(error))
     }
     const addPost = () => {
-        const postId = posts.length
+        const postId = posts.length + 1
         const newPostContent = {
             id: postId,
-            title: "new title",
-            content: "new post"
+            title: "Add a title",
+            content: "Add content"
         }
         // This does NOT need to add the entire Post component onto the list
-        let updatedPosts = posts.concat(newPostContent)
-        setPosts(updatedPosts)
+        axios
+            .post("http://localhost:3001/posts", newPostContent)
+            .then((response) => {
+                // let updatedPosts =
+                setPosts(posts.concat(response.data))
+            })
     }
     // Currently no filter for the posts - for now, we are rendering all of them
     const displayedPosts = posts.map((post) => (
