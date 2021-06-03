@@ -14,11 +14,13 @@ import ChangeBg from "./icons/ChangeBg"
 function App() {
     const [posts, setPosts] = useState([])
     const [selected, setSelected] = useState(-1)
-    const [title, setTitle] = useState(["hi"])
+    const [title, setTitle] = useState("")
 
     useEffect(() => {
-        axios.get("http://localhost:3001/posts").then((response) => {
-            setPosts(response.data)
+        axios.get("http://localhost:3001/board/").then((response) => {
+            console.log(response.data)
+            setPosts(response.data.posts)
+            setTitle(response.data.boardTitle)
         })
     }, [])
     // Selected will be the postId
