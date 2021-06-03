@@ -9,6 +9,7 @@ module.exports = {
             white: colors.white,
             gray: colors.coolGray,
             red: "#DC2626",
+            green: "#13bf0d",
             primary: "#236477",
             secondary: "#7cad3e",
             defaultBg: "#F4F4F4"

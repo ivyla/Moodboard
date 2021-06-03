@@ -1,1 +1,5 @@
 1. On Delete Post, moving the screen will cause the windows to act strange
+
+ToDos
+1. Button pop up to save changes when editing posts
+2. 

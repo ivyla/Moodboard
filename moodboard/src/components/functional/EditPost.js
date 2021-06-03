@@ -4,7 +4,11 @@ const EditPost = ({setDelete, showDelete, selected, setSelected, postId}) => {
     }
 
     const handleEditClick = () => {
-        setSelected(postId)
+        if (selected === postId) {
+            setSelected(-1)
+        } else {
+            setSelected(postId)
+        }
     }
     const staticButtonStyle =
         "bg-white h-10 w-10 rounded-full flex justify-center m-1 shadow-md"

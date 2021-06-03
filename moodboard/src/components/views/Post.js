@@ -1,7 +1,9 @@
 // An editable post
 import {useState} from "react"
 import EditPost from "../functional/EditPost"
+import DeletePost from "../functional/DeletePost"
 import TextareaAutosize from "react-textarea-autosize"
+import Minimize from "../../icons/Minimize"
 
 const Post = ({post, id, deletePost, selected, setSelected}) => {
     const [titleValue, setTitle] = useState(post.title)
@@ -30,46 +32,50 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
     ) : null
 
     return (
-        <div className="w-72 h-72 bg-white m-3 overflow-y-auto rounded-md shadow-md ">
-            <EditPost
-                showDelete={showDelete}
-                setDelete={setDelete}
-                selected={selected}
-                setSelected={setSelected}
-                postId={id}
-            />
-            {/* Delete Overlay */}
+        <div className="flex flex-row">
+            <div className="aboslute w-72 h-72 bg-white m-3 mr-0 overflow-y-auto rounded-md shadow-md ">
+                <EditPost
+                    showDelete={showDelete}
+                    setDelete={setDelete}
+                    selected={selected}
+                    setSelected={setSelected}
+                    postId={id}
+                />
+                {/* Delete Overlay */}
+                <DeletePost
+                    showDelete={showDelete}
+                    setDelete={setDelete}
+                    deletePost={deletePost}
+                    postId={id}
+                />
+
+                {/* Text Areas */}
+                <div className="p-5">
+                    <div className=" text-2xl font-bold ">{titleDisplay}</div>
+                    <div>{contentDisplay}</div>
+                </div>
+
+                {/* Overlay */}
+            </div>
+            {/* Popup window for each post, part of flex flex-row */}
             <div
                 className={
-                    showDelete
-                        ? "block absolute pt-16 w-72 h-72 bg-black text-white opacity-70 overflow-y-auto rounded-md shadow-md"
+                    selected === id
+                        ? "w-72 h-72 bg-white m-3 ml-0 overflow-y-auto rounded-md shadow-md"
                         : "hidden"
                 }
             >
-                <h1 className="text-2xl text-center m-4">Delete this post?</h1>
-                <div className="flex flex-row space-evenly justify-center space-x-4">
-                    <button
-                        className="btn-delete"
-                        onClick={() => deletePost(post.id)}
-                    >
-                        Delete
-                    </button>
-                    <button
-                        className="btn-neutral"
-                        onClick={() => setDelete(false)}
-                    >
-                        Cancel
+                {/* Top bar */}
+                <div className="flex flex-row justify-between w-full bg-primary px-2">
+                    <div className="text-xl text-white p-2">
+                        <h1 className=""> Edit Post </h1>
+                    </div>
+                    <button onClick={() => setSelected(-1)}>
+                        <Minimize />
                     </button>
                 </div>
-                {/* End of delete overlay */}
+                {/* <button className="btn-confirm"> Save </button> */}
             </div>
-            {/* Text Areas */}
-            <div className="p-5">
-                <div className=" text-2xl font-bold ">{titleDisplay}</div>
-                <div>{contentDisplay}</div>
-            </div>
-
-            {/* Overlay */}
         </div>
     )
 }
