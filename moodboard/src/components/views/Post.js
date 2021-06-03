@@ -11,11 +11,16 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
     const [showDelete, setDelete] = useState(false)
     // Toggles between display mode of text posts
     const [enableTextEdit, setTextEdit] = useState(false)
+    const [titleFont, setTitleFont] = useState("text-2xl")
+    const [contentFont, setContentFont] = useState("text-base")
 
     const handleTitle = (event) => setTitle(event.target.value)
     const handleText = (event) => setContent(event.target.value)
     const titleAreaStyle =
-        "box-border break-words overflow-hidden resize-none w-full "
+        "box-border break-words overflow-hidden resize-none w-full " + titleFont
+    const contentAreaStyle =
+        "box-border break-words overflow-hidden resize-none w-full " +
+        contentFont
 
     const titleDisplay = titleValue ? (
         <TextareaAutosize
@@ -28,7 +33,7 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
 
     const contentDisplay = contentValue ? (
         <TextareaAutosize
-            className={titleAreaStyle.concat(" text-base")}
+            className={contentAreaStyle}
             value={contentValue}
             onChange={handleText}
             disabled={!enableTextEdit}
@@ -56,7 +61,7 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
 
                 {/* Text Areas */}
                 <div className="p-5">
-                    <div className=" text-2xl font-bold ">{titleDisplay}</div>
+                    <div className="font-bold ">{titleDisplay}</div>
                     <div>{contentDisplay}</div>
                 </div>
 
@@ -80,6 +85,12 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
                     </button>
                 </div>
                 {/* <button className="btn-confirm"> Save </button> */}
+                <div className="px-2">
+                    <h3> Title Size </h3>
+                    <input type="range" />
+                    <h3> Content Size </h3>
+                    <input type="range" />
+                </div>
             </div>
         </div>
     )
