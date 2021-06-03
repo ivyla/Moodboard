@@ -1,4 +1,12 @@
-const EditPost = ({setDelete, showDelete, selected, setSelected, postId}) => {
+const EditPost = ({
+    setDelete,
+    showDelete,
+    selected,
+    setSelected,
+    postId,
+    enableTextEdit,
+    setTextEdit
+}) => {
     const handleDeleteClick = () => {
         setDelete(!showDelete)
     }
@@ -6,8 +14,10 @@ const EditPost = ({setDelete, showDelete, selected, setSelected, postId}) => {
     const handleEditClick = () => {
         if (selected === postId) {
             setSelected(-1)
+            setTextEdit(false)
         } else {
             setSelected(postId)
+            setTextEdit(true)
         }
     }
     const staticButtonStyle =

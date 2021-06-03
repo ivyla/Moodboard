@@ -9,17 +9,20 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
     const [showDelete, setDelete] = useState(false)
+    // Toggles between display mode of
+    const [enableTextEdit, setTextEdit] = useState(false)
 
     const handleTitle = (event) => setTitle(event.target.value)
     const handleText = (event) => setContent(event.target.value)
     const titleAreaStyle =
-        "box-border break-words overflow-hidden resize-none w-full"
+        "box-border break-words overflow-hidden resize-none w-full "
 
     const titleDisplay = titleValue ? (
         <TextareaAutosize
             className={titleAreaStyle}
             value={titleValue}
             onChange={handleTitle}
+            disabled={!enableTextEdit}
         />
     ) : null
 
@@ -28,6 +31,7 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
             className={titleAreaStyle.concat(" text-base")}
             value={contentValue}
             onChange={handleText}
+            disabled={!enableTextEdit}
         />
     ) : null
 
@@ -40,8 +44,9 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
                     selected={selected}
                     setSelected={setSelected}
                     postId={id}
+                    enableTextEdit={enableTextEdit}
+                    setTextEdit={setTextEdit}
                 />
-                {/* Delete Overlay */}
                 <DeletePost
                     showDelete={showDelete}
                     setDelete={setDelete}
