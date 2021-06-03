@@ -9,7 +9,7 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
     const [showDelete, setDelete] = useState(false)
-    // Toggles between display mode of
+    // Toggles between display mode of text posts
     const [enableTextEdit, setTextEdit] = useState(false)
 
     const handleTitle = (event) => setTitle(event.target.value)
