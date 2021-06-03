@@ -14,13 +14,14 @@ import ChangeBg from "./icons/ChangeBg"
 function App() {
     const [posts, setPosts] = useState([])
     const [selected, setSelected] = useState(-1)
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState("Add a title")
 
     useEffect(() => {
-        axios.get("http://localhost:3001/board/").then((response) => {
+        axios.get("http://localhost:3001/posts/").then((response) => {
             console.log(response.data)
-            setPosts(response.data.posts)
-            setTitle(response.data.boardTitle)
+            setPosts(response.data)
+            // setPosts(response.data.posts)
+            // setTitle(response.data.boardTitle)
         })
     }, [])
     // Selected will be the postId
@@ -38,6 +39,7 @@ function App() {
             })
             .catch((error) => console.log(error))
     }
+
     const addPost = () => {
         const postId = posts.length + 1
         const newPostContent = {
@@ -69,7 +71,6 @@ function App() {
         setTitle(event.target.value)
     }
 
-    console.log(`selected: ${selected}`)
     return (
         <div className="h-screen bg-defaultBg overflow-x-hidden">
             <NavBar />

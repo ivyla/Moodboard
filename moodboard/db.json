@@ -1,6 +1,4 @@
-{ "board": {
-  "boardId": 1,
-  "boardTitle": "hello worhgfhgfld",
+{
   "posts": [
     {
       "id": 1,
@@ -29,7 +27,11 @@
     {
       "id": 6,
       "content": "hee yaw ya hooo lets go here lim currently learning tailwind blah blha"
+    },
+    {
+      "id": 7,
+      "title": "Add a title",
+      "content": "Add content"
     }
   ]
-}
 }

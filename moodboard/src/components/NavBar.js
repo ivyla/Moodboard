@@ -2,11 +2,14 @@ import {slide as Menu} from "react-burger-menu"
 
 const NavBar = () => {
     return (
-        <nav className="w-screen bg-primary text-right px-5 py-5">
+        <nav className="w-screen bg-primary text-right px-5 py-5 h-4">
             <span style={{float: "left"}} className="text-xl">
-                <a href="facebook.com"> Moodboard</a>
+                <a className="block" href="facebook.com">
+                    {" "}
+                    Moodboard
+                </a>
             </span>
-            {/* <Menu right pageWrapId={"page-wrap"} noOverlay>
+            {/* <Menu right pageWrapId={"page-wrap"}>
                 <a id="home" className="menu-item" href="/">
                     Home
                 </a>
