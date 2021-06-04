@@ -5,6 +5,15 @@ import DeletePost from "../functional/DeletePost"
 import TextareaAutosize from "react-textarea-autosize"
 import Minimize from "../../icons/Minimize"
 
+// Tailwinds Sizes
+const contentFontRef = new Map([
+    [1, "text-xs"],
+    [2, "text-sm"],
+    [3, "text-base"],
+    [4, "text-lg"],
+    [5, "text-xl"]
+])
+
 const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
@@ -12,15 +21,19 @@ const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
     // Toggles between display mode of text posts
     const [enableTextEdit, setTextEdit] = useState(false)
     const [titleFont, setTitleFont] = useState("text-2xl")
-    const [contentFont, setContentFont] = useState("text-base")
+    const [contentFont, setContentFont] = useState(3)
 
     const handleTitle = (event) => setTitle(event.target.value)
     const handleText = (event) => setContent(event.target.value)
+    const handleContentSlider = (event) => setContentFont(event.target.value)
     const titleAreaStyle =
         "box-border break-words overflow-hidden resize-none w-full " + titleFont
     const contentAreaStyle =
         "box-border break-words overflow-hidden resize-none w-full " +
-        contentFont
+        contentFontRef.get(parseInt(contentFont))
+    console.log(contentFont, typeof contentFont)
+    console.log(contentFontRef.get(contentFont))
+    console.log(contentAreaStyle)
 
     const titleDisplay = titleValue ? (
         <TextareaAutosize
@@ -42,7 +55,7 @@ const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
 
     return (
         <div className="flex flex-row">
-            <div className="aboslute w-64 h-72 bg-white m-3 mr-0 overflow-y-auto rounded-md shadow-md ">
+            <div className=" w-64 h-72 bg-white m-3 mr-0 overflow-y-auto rounded-md shadow-md ">
                 <EditPost
                     showDelete={showDelete}
                     setDelete={setDelete}
@@ -88,7 +101,14 @@ const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
                     <h3> Title Size </h3>
                     <input type="range" />
                     <h3> Content Size </h3>
-                    <input type="range" />
+                    <input
+                        type="range"
+                        min="1"
+                        max="5"
+                        step="1"
+                        onChange={handleContentSlider}
+                        value={contentFont}
+                    />
                 </div>
                 <button
                     className="btn-confirm"
