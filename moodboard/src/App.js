@@ -1,6 +1,6 @@
 import "./App.css"
 import {useState, useEffect} from "react"
-import axios from "axios"
+import postService from "./services/posts"
 // Components
 import NavBar from "./components/NavBar"
 import Post from "./components/views/Post"
@@ -17,43 +17,29 @@ function App() {
     const [title, setTitle] = useState("Add a title")
 
     useEffect(() => {
-        axios.get("http://localhost:3001/posts/").then((response) => {
-            console.log(response.data)
-            setPosts(response.data)
-            // setPosts(response.data.posts)
-            // setTitle(response.data.boardTitle)
-        })
+        postService.getAll().then((initialPosts) => setPosts(initialPosts))
     }, [])
-    // Selected will be the postId
-
     const deletePost = (id) => {
         console.log("deleting ", id)
         let updatedPosts = posts.filter((post) => {
             return post.id !== id
         })
-        axios
-            .delete(`http://localhost:3001/posts/${id}`)
-            .then((response) => {
-                console.log(`deleted ${response.data}`)
-                setPosts(updatedPosts)
-            })
-            .catch((error) => console.log(error))
+        postService.deletePost(id).then((response) => {
+            setPosts(updatedPosts)
+        })
     }
 
     const addPost = () => {
-        const postId = posts.length + 1
+        const postId = posts[posts.length - 1].id + 1
         const newPostContent = {
             id: postId,
             title: "Add a title",
             content: "Add content"
         }
-        // This does NOT need to add the entire Post component onto the list
-        axios
-            .post("http://localhost:3001/posts", newPostContent)
-            .then((response) => {
-                // let updatedPosts =
-                setPosts(posts.concat(response.data))
-            })
+        postService.newPost(newPostContent).then((response) => {
+            setPosts([...posts, newPostContent])
+            console.log(response.data)
+        })
     }
     // Currently no filter for the posts - for now, we are rendering all of them
     const displayedPosts = posts.map((post) => (
