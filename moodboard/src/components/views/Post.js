@@ -14,26 +14,33 @@ const contentFontRef = new Map([
     [5, "text-xl"]
 ])
 
+const titleFontRef = new Map([
+    [1, "text-lg"],
+    [2, "text-xl"],
+    [3, "text-2xl"],
+    [4, "text-3xl"],
+    [5, "text-4xl"]
+])
+
 const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
     const [showDelete, setDelete] = useState(false)
     // Toggles between display mode of text posts
     const [enableTextEdit, setTextEdit] = useState(false)
-    const [titleFont, setTitleFont] = useState("text-2xl")
+    const [titleFont, setTitleFont] = useState(3)
     const [contentFont, setContentFont] = useState(3)
 
     const handleTitle = (event) => setTitle(event.target.value)
     const handleText = (event) => setContent(event.target.value)
     const handleContentSlider = (event) => setContentFont(event.target.value)
+    const handleTitleSlider = (event) => setTitleFont(event.target.value)
     const titleAreaStyle =
-        "box-border break-words overflow-hidden resize-none w-full " + titleFont
+        "box-border break-words overflow-hidden resize-none w-full " +
+        titleFontRef.get(parseInt(titleFont))
     const contentAreaStyle =
         "box-border break-words overflow-hidden resize-none w-full " +
         contentFontRef.get(parseInt(contentFont))
-    console.log(contentFont, typeof contentFont)
-    console.log(contentFontRef.get(contentFont))
-    console.log(contentAreaStyle)
 
     const titleDisplay = titleValue ? (
         <TextareaAutosize
@@ -99,7 +106,14 @@ const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
                 </div>
                 <div className="px-2">
                     <h3> Title Size </h3>
-                    <input type="range" />
+                    <input
+                        type="range"
+                        min="1"
+                        max="5"
+                        step="1"
+                        onChange={handleTitleSlider}
+                        value={titleFont}
+                    />
                     <h3> Content Size </h3>
                     <input
                         type="range"
