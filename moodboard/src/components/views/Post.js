@@ -42,7 +42,7 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
 
     return (
         <div className="flex flex-row">
-            <div className="aboslute w-72 h-72 bg-white m-3 mr-0 overflow-y-auto rounded-md shadow-md ">
+            <div className="aboslute w-64 h-72 bg-white m-3 mr-0 overflow-y-auto rounded-md shadow-md ">
                 <EditPost
                     showDelete={showDelete}
                     setDelete={setDelete}
@@ -84,13 +84,13 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
                         <Minimize />
                     </button>
                 </div>
-                {/* <button className="btn-confirm"> Save </button> */}
                 <div className="px-2">
                     <h3> Title Size </h3>
                     <input type="range" />
                     <h3> Content Size </h3>
                     <input type="range" />
                 </div>
+                <button className="btn-confirm"> Save </button>
             </div>
         </div>
     )
