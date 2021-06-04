@@ -5,7 +5,7 @@ import DeletePost from "../functional/DeletePost"
 import TextareaAutosize from "react-textarea-autosize"
 import Minimize from "../../icons/Minimize"
 
-const Post = ({post, id, deletePost, selected, setSelected}) => {
+const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
     const [titleValue, setTitle] = useState(post.title)
     const [contentValue, setContent] = useState(post.content)
     const [showDelete, setDelete] = useState(false)
@@ -90,7 +90,19 @@ const Post = ({post, id, deletePost, selected, setSelected}) => {
                     <h3> Content Size </h3>
                     <input type="range" />
                 </div>
-                <button className="btn-confirm"> Save </button>
+                <button
+                    className="btn-confirm"
+                    onClick={() =>
+                        updatePost(id, {
+                            id: id,
+                            title: titleValue,
+                            content: contentValue
+                        })
+                    }
+                >
+                    {" "}
+                    Save{" "}
+                </button>
             </div>
         </div>
     )

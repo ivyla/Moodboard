@@ -16,13 +16,14 @@ const deletePost = (id) => {
     return response.then((response) => response.data)
 }
 
-// const update = (id, newObject) => {
-//   const request = axios.put(`${baseUrl}/${id}`, newObject)
-//   return request.then(response => response.data)
-// }
+const updatePost = (id, newObject) => {
+    const request = axios.put(`${baseUrl}/${id}`, newObject)
+    return request.then((response) => response.data)
+}
 
 export default {
     getAll,
     newPost,
-    deletePost
+    deletePost,
+    updatePost
 }

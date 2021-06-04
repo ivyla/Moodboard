@@ -42,6 +42,30 @@ function Board() {
         })
     }
 
+    const updatePost = (currId, postContent) => {
+        // Replace item in the current posts and set posts
+        console.log(
+            `currId: ${currId} postContent: ${JSON.stringify(postContent)}`
+        )
+        const newPostObj = {
+            id: currId,
+            title: postContent.title,
+            content: postContent.content
+        }
+        const newPosts = posts.map((post) => {
+            if (post.id === currId) {
+                return newPostObj
+            } else {
+                return post
+            }
+        })
+
+        postService.updatePost(currId, postContent).then((response) => {
+            console.log(response.data)
+            setPosts(newPosts)
+        })
+    }
+
     // const updatePost = ()
     // Currently no filter for the posts - for now, we are rendering all of them
     const displayedPosts = posts.map((post) => (
@@ -50,6 +74,7 @@ function Board() {
             id={post.id}
             post={post}
             deletePost={deletePost}
+            updatePost={updatePost}
             selected={selected}
             setSelected={setSelected}
         />
