@@ -3,35 +3,49 @@
     {
       "id": 3,
       "title": "First Task of the day",
-      "content": "Get ready in the morning. Praesent pellentesque eget ipsum vel bibendum."
+      "content": "My name is Ivy",
+      "titleFont": "5",
+      "contentFont": "1"
     },
     {
       "id": 4,
       "title": "This is what the very last text post is gonna look like.",
-      "content": "hee yaw ya hooo lets go here lim currently learning tailwind blah blha"
+      "content": "hee yaw ya hooo lets go here lim currently learning tailwind blah blha",
+      "titleFont": "3",
+      "contentFont": "3"
     },
     {
       "id": 5,
-      "title": "This is what the very last text post is gonna look like."
+      "title": "This is what the very last text post is gonna look like.",
+      "titleFont": "3",
+      "contentFont": "3"
     },
     {
       "id": 6,
-      "content": "hee yaw ya hooo lets go here lim currently learning tailwind blah blha"
+      "content": "hee yaw ya hooo lets go here lim currently learning tailwind blah blha",
+      "titleFont": "2",
+      "contentFont": "4"
     },
     {
       "id": 8,
       "title": "Add a title 1",
-      "content": "Add content"
+      "content": "Add content",
+      "titleFont": "3",
+      "contentFont": "3"
     },
     {
       "id": 9,
       "title": "Add a title",
-      "content": "Add content"
+      "content": "Add content",
+      "titleFont": "3",
+      "contentFont": "3"
     },
     {
       "id": 10,
       "title": "Add a title",
-      "content": "Add cggggfdgfdgontent"
+      "content": "Add cggggfdgfdgontent",
+      "titleFont": "3",
+      "contentFont": "3"
     }
   ]
 }

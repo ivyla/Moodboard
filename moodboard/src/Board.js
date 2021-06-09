@@ -50,7 +50,9 @@ function Board() {
         const newPostObj = {
             id: currId,
             title: postContent.title,
-            content: postContent.content
+            content: postContent.content,
+            titleFont: postContent.titleFont,
+            contentFont: postContent.contentFont
         }
         const newPosts = posts.map((post) => {
             if (post.id === currId) {

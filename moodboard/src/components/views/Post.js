@@ -28,8 +28,8 @@ const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
     const [showDelete, setDelete] = useState(false)
     // Toggles between display mode of text posts
     const [enableTextEdit, setTextEdit] = useState(false)
-    const [titleFont, setTitleFont] = useState(3)
-    const [contentFont, setContentFont] = useState(3)
+    const [titleFont, setTitleFont] = useState(post.titleFont)
+    const [contentFont, setContentFont] = useState(post.contentFont)
 
     const handleTitle = (event) => setTitle(event.target.value)
     const handleText = (event) => setContent(event.target.value)
@@ -130,7 +130,9 @@ const Post = ({post, id, selected, setSelected, deletePost, updatePost}) => {
                         updatePost(id, {
                             id: id,
                             title: titleValue,
-                            content: contentValue
+                            content: contentValue,
+                            titleFont: titleFont,
+                            contentFont: contentFont
                         })
                     }
                 >
