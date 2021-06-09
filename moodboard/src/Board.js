@@ -67,8 +67,6 @@ function Board() {
             setPosts(newPosts)
         })
     }
-
-    // const updatePost = ()
     // Currently no filter for the posts - for now, we are rendering all of them
     const displayedPosts = posts.map((post) => (
         <Post
